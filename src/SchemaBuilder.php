@@ -8,14 +8,14 @@ use Linio\Component\Input\Node\BaseNode;
 
 class SchemaBuilder
 {
-    public function build(InputHandler $inputHandler): array
+    public function build(InputHandler $inputHandler) : array
     {
         $inputHandler->define();
 
         return $this->walk($inputHandler->getRoot());
     }
 
-    protected function walk(BaseNode $node): array
+    protected function walk(BaseNode $node) : array
     {
         if (!$node->hasChildren()) {
             return [];

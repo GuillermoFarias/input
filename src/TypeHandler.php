@@ -46,12 +46,12 @@ class TypeHandler
         $this->defaultInstantiator = new SetInstantiator();
     }
 
-    public function addType(string $name, string $class): void
+    public function addType(string $name, string $class) : void
     {
         $this->types[$name] = $class;
     }
 
-    public function getType(string $name): BaseNode
+    public function getType(string $name) : BaseNode
     {
         if (isset($this->types[$name])) {
             $type = new $this->types[$name]();
@@ -93,12 +93,12 @@ class TypeHandler
         throw new \InvalidArgumentException('Unknown type name: ' . $name);
     }
 
-    protected function isClassType(string $type): bool
+    protected function isClassType(string $type) : bool
     {
         return (class_exists($type) || interface_exists($type)) && $type != 'datetime';
     }
 
-    protected function isCollectionType(string $type): bool
+    protected function isCollectionType(string $type) : bool
     {
         $collectionType = $this->getCollectionType($type);
 
@@ -109,7 +109,7 @@ class TypeHandler
         return true;
     }
 
-    protected function isScalarCollectionType(string $type): bool
+    protected function isScalarCollectionType(string $type) : bool
     {
         $collectionType = $this->getCollectionType($type);
 
@@ -120,7 +120,7 @@ class TypeHandler
         return true;
     }
 
-    protected function getCollectionType(string $type): string
+    protected function getCollectionType(string $type) : string
     {
         $pos = strrpos($type, '[]');
 

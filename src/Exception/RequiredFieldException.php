@@ -16,7 +16,7 @@ class RequiredFieldException extends \RuntimeException
         $this->field = $field;
     }
 
-    public function getField(): string
+    public function getField() : string
     {
         return $this->field;
     }

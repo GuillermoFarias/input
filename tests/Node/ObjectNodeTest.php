@@ -7,12 +7,12 @@ namespace Linio\Component\Input\Node;
 use Linio\Component\Input\Constraint\ConstraintInterface;
 use Linio\Component\Input\Exception\InvalidConstraintException;
 use Linio\Component\Input\Instantiator\InstantiatorInterface;
+use Linio\Component\Input\TestCase;
 use Linio\Component\Input\TypeHandler;
-use PHPUnit\Framework\TestCase;
 
 class ObjectNodeTest extends TestCase
 {
-    public function testIsGettingValue(): void
+    public function testIsGettingValue() : void
     {
         $expectedInput = ['timestamp' => 1389312000];
         $expectedObj = new \DateTime('@1389312000');
@@ -33,7 +33,7 @@ class ObjectNodeTest extends TestCase
         $this->assertEquals($expectedObj, $child->getValue('foobar', $expectedInput));
     }
 
-    public function testIsCheckingConstraintsOnValue(): void
+    public function testIsCheckingConstraintsOnValue() : void
     {
         $typeHandler = $this->prophesize(TypeHandler::class);
         $typeHandler->getType('DateTime')->willReturn(new ObjectNode());

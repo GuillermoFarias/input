@@ -11,7 +11,7 @@ class Url extends Constraint
         $this->setErrorMessage($errorMessage ?? 'Invalid URL format');
     }
 
-    public function validate($content): bool
+    public function validate($content) : bool
     {
         return (bool) filter_var($content, FILTER_VALIDATE_URL);
     }

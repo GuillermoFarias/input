@@ -26,7 +26,7 @@ class Enum extends Constraint
         );
     }
 
-    public function validate($content): bool
+    public function validate($content) : bool
     {
         if (!is_scalar($content)) {
             return false;

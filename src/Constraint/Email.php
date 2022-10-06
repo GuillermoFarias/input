@@ -11,7 +11,7 @@ class Email extends Constraint
         $this->setErrorMessage($errorMessage ?? 'Invalid email format');
     }
 
-    public function validate($content): bool
+    public function validate($content) : bool
     {
         return (bool) filter_var($content, FILTER_VALIDATE_EMAIL);
     }

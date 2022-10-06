@@ -6,12 +6,12 @@ namespace Linio\Component\Input\Node;
 
 use Linio\Component\Input\Constraint\ConstraintInterface;
 use Linio\Component\Input\Exception\InvalidConstraintException;
+use Linio\Component\Input\TestCase;
 use Linio\Component\Input\TypeHandler;
-use PHPUnit\Framework\TestCase;
 
 class ScalarCollectionNodeTest extends TestCase
 {
-    public function testIsGettingValue(): void
+    public function testIsGettingValue() : void
     {
         $typeHandler = $this->prophesize(TypeHandler::class);
         $typeHandler->getType('int')->willReturn(new ScalarCollectionNode());
@@ -23,7 +23,7 @@ class ScalarCollectionNodeTest extends TestCase
         $this->assertEquals([15, 25, 36], $child->getValue('foobar', [15, 25, 36]));
     }
 
-    public function testIsDetectingBadTypes(): void
+    public function testIsDetectingBadTypes() : void
     {
         $typeHandler = $this->prophesize(TypeHandler::class);
         $typeHandler->getType('int')->willReturn(new ScalarCollectionNode());
@@ -38,7 +38,7 @@ class ScalarCollectionNodeTest extends TestCase
         $child->getValue('foobar', [15, '25']);
     }
 
-    public function testIsCheckingConstraintsOnValue(): void
+    public function testIsCheckingConstraintsOnValue() : void
     {
         $typeHandler = $this->prophesize(TypeHandler::class);
         $typeHandler->getType('int')->willReturn(new ScalarCollectionNode());
@@ -56,7 +56,7 @@ class ScalarCollectionNodeTest extends TestCase
         $child->getValue('foobar', [15, 25, 36]);
     }
 
-    public function testIsCheckingIfIsIterable(): void
+    public function testIsCheckingIfIsIterable() : void
     {
         $typeHandler = $this->prophesize(TypeHandler::class);
         $typeHandler->getType('int[]')->willReturn(new ScalarCollectionNode());

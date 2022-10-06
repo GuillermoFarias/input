@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class DateRangeTest extends TestCase
 {
-    public function testIsCheckingInvalidData(): void
+    public function testIsCheckingInvalidData() : void
     {
         $constraint = new DateRange('today', '+3 days');
         $this->assertFalse($constraint->validate('yesterday'));
@@ -20,21 +20,21 @@ class DateRangeTest extends TestCase
         $this->assertFalse($constraint->validate($obj));
     }
 
-    public function testIsCheckingValidData(): void
+    public function testIsCheckingValidData() : void
     {
         $constraint = new DateRange('today', '+3 days');
         $this->assertTrue($constraint->validate('today'));
         $this->assertTrue($constraint->validate('tomorrow'));
     }
 
-    public function testIsGettingErrorMessage(): void
+    public function testIsGettingErrorMessage() : void
     {
         $constraint = new DateRange('today', '+3 days');
         $this->assertFalse($constraint->validate('yesterday'));
         $this->assertEquals('[field] Date is not between "today" and "+3 days"', $constraint->getErrorMessage('field'));
     }
 
-    public function testErrorMessageIsCustomizable(): void
+    public function testErrorMessageIsCustomizable() : void
     {
         $constraint = new DateRange('today', '+3days', 'CUSTOM!');
         $this->assertSame('[field] CUSTOM!', $constraint->getErrorMessage('field'));

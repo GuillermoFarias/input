@@ -36,27 +36,27 @@ abstract class InputHandler
         $this->root->setTypeHandler($this->typeHandler);
     }
 
-    public function add(string $key, string $type, array $options = [], InputHandler $handler = null): BaseNode
+    public function add(string $key, string $type, array $options = [], InputHandler $handler = null) : BaseNode
     {
         return $this->root->add($key, $type, $options, $handler);
     }
 
-    public function remove(string $key): void
+    public function remove(string $key) : void
     {
         $this->root->remove($key);
     }
 
-    public function getRoot(): BaseNode
+    public function getRoot() : BaseNode
     {
         return $this->root;
     }
 
-    public function setRootType(string $type): void
+    public function setRootType(string $type) : void
     {
         $this->root = $this->typeHandler->getType($type);
     }
 
-    public function bind(array $input): void
+    public function bind(array $input) : void
     {
         $this->define();
 
@@ -87,17 +87,17 @@ abstract class InputHandler
         return isset($this->output[$index]);
     }
 
-    public function isValid(): bool
+    public function isValid() : bool
     {
         return empty($this->errors);
     }
 
-    public function getErrors(): array
+    public function getErrors() : array
     {
         return $this->errors;
     }
 
-    public function getErrorsAsString(): string
+    public function getErrorsAsString() : string
     {
         return implode(', ', $this->errors);
     }

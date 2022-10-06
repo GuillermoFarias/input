@@ -18,7 +18,7 @@ class Type extends Constraint
         $this->setErrorMessage($errorMessage ?? 'Value does not match type: ' . $this->type);
     }
 
-    public function validate($content): bool
+    public function validate($content) : bool
     {
         return call_user_func('is_' . $this->type, $content);
     }

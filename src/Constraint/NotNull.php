@@ -11,7 +11,7 @@ class NotNull extends Constraint
         $this->setErrorMessage($errorMessage ?? 'Unexpected empty content');
     }
 
-    public function validate($content): bool
+    public function validate($content) : bool
     {
         if ($content && is_string($content)) {
             $content = trim($content);

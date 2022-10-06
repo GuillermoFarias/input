@@ -1,0 +1,42 @@
+version: '3.7'
+services:
+  php-cs-fixer:
+    image: gcr.io/linio-support/docker-php:8.1
+    init: true
+    volumes:
+      - .:/application:delegated
+    environment:
+      LINIO_ENV: local
+      XDEBUG_ENV: enabled
+      XDEBUG_MODE: coverage
+    entrypoint: vendor/bin/php-cs-fixer
+    command: fix --verbose --show-progress=estimating
+
+  composer:
+    image: gcr.io/linio-support/docker-php:8.1
+    init: true
+    volumes:
+      - .:/application:delegated
+      - composer-cache:/root/.composer/cache:delegated
+      - ${COMPOSER_HOME:-~/.composer}/auth.json:/root/.composer/auth.json:cached
+    environment:
+      LINIO_ENV: local
+      XDEBUG_ENV: enabled
+      XDEBUG_MODE: coverage
+      XDEBUG_CONFIG: client_host=host.docker.internal
+    entrypoint:
+      - linio-php-entrypoint
+      - composer
+
+  php:
+    image: gcr.io/linio-support/docker-php:8.1
+    init: true
+    volumes:
+      - .:/application:delegated
+      - composer-cache:/root/.composer/cache:delegated
+      - ${COMPOSER_HOME:-~/.composer}/auth.json:/root/.composer/auth.json:cached
+    environment:
+      LINIO_ENV: local
+
+volumes:
+  composer-cache: ~

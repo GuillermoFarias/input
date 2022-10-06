@@ -24,7 +24,7 @@ class Range extends Constraint
         $this->setErrorMessage($errorMessage ?? sprintf('Value is not between %d and %d', $this->min, $this->max));
     }
 
-    public function validate($content): bool
+    public function validate($content) : bool
     {
         if (!is_scalar($content)) {
             return false;

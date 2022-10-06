@@ -24,7 +24,7 @@ class DateRange extends Constraint
         $this->setErrorMessage($errorMessage ?? sprintf('Date is not between "%s" and "%s"', $this->min, $this->max));
     }
 
-    public function validate($content): bool
+    public function validate($content) : bool
     {
         if (!is_scalar($content)) {
             return false;

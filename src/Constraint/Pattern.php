@@ -18,7 +18,7 @@ class Pattern extends Constraint
         $this->setErrorMessage($errorMessage ?? 'Required pattern does not match');
     }
 
-    public function validate($content): bool
+    public function validate($content) : bool
     {
         if (!is_scalar($content)) {
             return false;

@@ -11,12 +11,12 @@ abstract class Constraint implements ConstraintInterface
      */
     protected $errorMessage;
 
-    public function getErrorMessage(string $field): string
+    public function getErrorMessage(string $field) : string
     {
         return sprintf('[%s] %s', $field, $this->errorMessage);
     }
 
-    public function setErrorMessage(string $errorMessage): void
+    public function setErrorMessage(string $errorMessage) : void
     {
         $this->errorMessage = $errorMessage;
     }

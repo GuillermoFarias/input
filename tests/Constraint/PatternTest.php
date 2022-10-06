@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class PatternTest extends TestCase
 {
-    public function testIsCheckingInvalidData(): void
+    public function testIsCheckingInvalidData() : void
     {
         $constraint = new Pattern('/^\d{4}\-\d{2}-\d{2}$/');
         $this->assertFalse($constraint->validate(null));
@@ -21,20 +21,20 @@ class PatternTest extends TestCase
         $this->assertFalse($constraint->validate($obj));
     }
 
-    public function testIsCheckingValidData(): void
+    public function testIsCheckingValidData() : void
     {
         $constraint = new Pattern('/^\d{4}\-\d{2}-\d{2}$/');
         $this->assertTrue($constraint->validate('2014-04-22'));
     }
 
-    public function testIsGettingErrorMessage(): void
+    public function testIsGettingErrorMessage() : void
     {
         $constraint = new Pattern('/^\d{4}\-\d{2}-\d{2}$/');
         $this->assertFalse($constraint->validate(null));
         $this->assertEquals('[field] Required pattern does not match', $constraint->getErrorMessage('field'));
     }
 
-    public function testErrorMessageIsCustomizable(): void
+    public function testErrorMessageIsCustomizable() : void
     {
         $constraint = new Pattern('/^\d{4}\-\d{2}-\d{2}$/', 'CUSTOM!');
         $this->assertSame('[field] CUSTOM!', $constraint->getErrorMessage('field'));
