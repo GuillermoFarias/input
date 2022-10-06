@@ -21,6 +21,8 @@ class SchemaBuilder
             return [];
         }
 
+        $schema = [];
+
         foreach ($node->getChildren() as $field => $childNode) {
             $schema[$field]['type'] = $childNode->getTypeAlias();
             $schema[$field]['required'] = $childNode->isRequired();

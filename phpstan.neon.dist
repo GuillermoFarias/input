@@ -1,5 +1,5 @@
 parameters:
-    level: 0 # start increasing the level
+    level: 2
     paths:
         - src
         - tests
